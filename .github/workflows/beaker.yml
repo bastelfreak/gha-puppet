@@ -153,6 +153,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup podman
+        if: ${{ inputs.beaker_hypervisor == 'docker_podman' }}
         run: |
           sudo apt-get install -y podman
           systemctl start --user podman.socket
