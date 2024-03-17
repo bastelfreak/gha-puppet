@@ -158,6 +158,10 @@ jobs:
           sudo apt-get install -y podman
           systemctl start --user podman.socket
           echo "DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock" >> "$GITHUB_ENV"
+      - name: Podman version
+        run: |
+          podman version
+          podman info
       - name: install additional packages
         if: ${{ inputs.additional_packages != '' }}
         run: |
